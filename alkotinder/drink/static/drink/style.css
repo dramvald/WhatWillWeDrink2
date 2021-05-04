@@ -1,0 +1,33 @@
+header .container-fluid {
+    background: #white;
+    color: white;
+}
+.navbar-brand{
+    color: white;
+}
+
+.container-xl {
+    background-color: #white;
+}
+h1 {
+    color: white;
+    font: fantasy;
+}
+em {
+    color: white;
+}
+.list-group-item {
+    background-color: #E9C2A5;
+}
+.row{
+    color: white;
+    font: serif;
+}
+td{
+    color: white;
+    font-size: 16pt;
+}
+th{
+    color: white;
+    font-size: 18pt;
+}
