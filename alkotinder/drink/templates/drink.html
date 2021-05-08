@@ -44,44 +44,32 @@
 
         <div class="container-xl">
             <div class="row">
-                <div class="col-12 "><h1 align="center">Turf Cocktail</h1></div>
+                <div class="col-12 "><h1 align="center">{{ drink }}</h1></div>
                 <div class="col-12 align-self-center" align="center">
-                    <img src="https:\/\/www.thecocktaildb.com\/images\/media\/drink\/utypqq1441554367.jpg" class="img-thumbnail" width="400px" height="444px" alt="Drink">
+                    <img src= {{ drink_img }} class="img-thumbnail" width="400px" height="444px" alt="Drink">
                 </div>
                 <div class="col-12" align="center">
                     <h2 align="center">Instructions</h2>
-                    <font size="5">Stir all ingredients (except orange peel) with ice and strain into a cocktail glass.
-                        <p>Add the twist of orange peel and serve.</p></font>
+                    <font size="5">{{ instruction }}</font>
                 </div>
-                <table class="table table-striped table-hover" width="100px">
-                    <thead>
+                <table class="table table-striped table-hover">
                     <tr>
-                        <th scope="col">Ingredients</th>
-                        <th scope="col">Measures</th>
+                        <th width="50%" >Ingredients</th>
+                        <th width="50%" >Measures</th>
                     </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Dry Vermouth</td>
-                        <td>1 oz </td>
-                    </tr>
-                    <tr>
-                        <td>Gin</td>
-                        <td>1 oz </td>
-                    </tr>
-                    <tr>
-                        <td>Anis</td>
-                        <td>1\/4 tsp </td>
-                    </tr>
-                    <tr>
-                        <td>Bitters</td>
-                        <td>2 dashes</td>
-                    </tr>
-                    <tr>
-                        <td>Orange peel</td>
-                        <td>Twist of </td>
-                    </tr>
-                    </tbody>
+                    <td>
+                        <ul>
+                            {% for ingredient in ingredients %}
+                            <li>{{ ingredient }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td><td height="5%">
+                        <ul>
+                            {% for measure in measures %}
+                            <li>{{ measure }}</li>
+                            {% endfor %}
+                        </ul>
+                    </td>
                 </table>
             </div>
         </div>
