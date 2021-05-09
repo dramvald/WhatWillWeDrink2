@@ -1,33 +1,42 @@
+body{
+    background: #EAE7DC;
+}
 header .container-fluid {
-    background: #white;
-    color: white;
-}
-.navbar-brand{
-    color: white;
-}
+    background: #D8C3A5;
 
+}
+.navbar {
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+}
+.bg-light {
+    background-color: #E98074!important;
+}
 .container-xl {
     background-color: #white;
 }
+.img-thumbnail {
+    background-color: #E98074;
+}
 h1 {
-    color: white;
+
     font: fantasy;
 }
 em {
-    color: white;
+
 }
 .list-group-item {
     background-color: #E9C2A5;
 }
 .row{
-    color: white;
     font: serif;
+
 }
 td{
-    color: white;
     font-size: 16pt;
+
 }
 th{
-    color: white;
     font-size: 18pt;
+
 }
