@@ -1,5 +1,6 @@
 body{
     background: #EAE7DC;
+    font-family: Comic Sans MS;
 }
 header .container-fluid {
     background: #D8C3A5;
@@ -10,13 +11,13 @@ header .container-fluid {
     padding-bottom: .2rem;
 }
 .bg-light {
-    background-color: #E98074!important;
+    background-color: #d0b083!important;
 }
 .container-xl {
     background-color: #white;
 }
 .img-thumbnail {
-    background-color: #E98074;
+    background-color: #d0b083;
 }
 h1 {
 

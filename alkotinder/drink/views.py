@@ -49,5 +49,3 @@ def drinks(request):
                "measures": measures}
     return render(request, 'drink.html', context=context)
 
-
-print(get_drink_date(RANDOM_DRINK_API_URL))
