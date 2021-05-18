@@ -30,10 +30,10 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="navbar-link">
-                          <a href="#" class="nav-link" aria-current="page">Favorites</a>
+                          <a href="#" class="nav-link" aria-current="page">Drink selection</a>
                       </li>
                       <li class="navbar-link">
-                          <a href="#" class="nav-link" >Blacklist</a>
+                          <a href="#" class="nav-link" >Favorites</a>
                       </li>
 
                   </ul>
@@ -45,9 +45,9 @@
 
         <div class="container-xl">
             <div class="row">
-                <div class="col-12 "><h1 align="center">{{ drink }}</h1></div>
+                <div class="col-12 "><h1 align="center">{{ name }}</h1></div>
                 <div class="col-12 align-self-center" align="center">
-                    <img src={{drink_img}} class="img-thumbnail" width="400px" height="444px" alt="Drink">
+                    <img src= {{ img_url }} class="img-thumbnail" width="400px" height="444px" alt="Drink">
                 </div>
                 <div class="col-12" align="center">
                     <h2 align="center">Instructions</h2>
@@ -75,8 +75,8 @@
             </div>
         </div>
         <div align="center">
-            <button type="button" >Add to favorites</button>
-            <button type="button"  onclick="window.location.reload()">Next cocktail</button>
+            <button type="button" class="btn btn-primary btn-lg" >Add to favorites</button>
+            <button type="button" class="btn btn-secondary btn-lg">Add to blacklist</button>
         </div>
 
     </section>
