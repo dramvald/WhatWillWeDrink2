@@ -6,7 +6,7 @@ ALCOHOL = 'Alcoholic'
 RANDOM_DRINK_API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
 
 
-def get_drink_date(RANDOM_DRINK_API_URL):
+def get_drink_data(RANDOM_DRINK_API_URL):
     """Делам запрос на сервер по адресу req_url.
     Преобразуем строку json в объект python типа dict."""
     data = requests.get(RANDOM_DRINK_API_URL).json()
@@ -20,7 +20,7 @@ def get_drink_date(RANDOM_DRINK_API_URL):
         # Делаю проверку на алкогольный или без алкогольный напиток, и если он без алкогольный,
         # то отправляется снова запрос и проходит по циклу.
         if ALCOHOL != item['strAlcoholic']:
-            return get_drink_date(RANDOM_DRINK_API_URL)
+            return get_drink_data(RANDOM_DRINK_API_URL)
         else:
             return drink, instruction, drink_img, data['drinks'][0]
 
