@@ -4,7 +4,6 @@ body{
 }
 header .container-fluid {
     background: #D8C3A5;
-
 }
 .navbar {
     padding-top: .2rem;
@@ -20,24 +19,48 @@ header .container-fluid {
     background-color: #d0b083;
 }
 h1 {
-
     font: fantasy;
 }
-em {
 
-}
 .list-group-item {
     background-color: #E9C2A5;
 }
 .row{
     font: serif;
-
 }
 td{
     font-size: 16pt;
-
 }
 th{
     font-size: 18pt;
+}
 
+button {
+    display: inline-flex;
+    margin: 10px;
+    text-decoration: none;
+    position: relative;
+    font-size: 20px;
+    line-height: 20px;
+    padding: 12px 30px;
+    color: #FFF;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Roboto Condensed', Тahoma, sans-serif;
+    background: #D8C3A5;
+    cursor: pointer;
+    border: 2px solid #d0b083;
+    outline: 1px solid;
+    outline-color: #d0b083;
+    outline-offset: 0px;
+    text-shadow: none;
+    transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+button:hover,
+button:active,
+button:focus {
+    box-shadow: inset 0 0 20px #EAE7DC;
+    outline-color: rgba(255, 255, 255, 0);
+    outline-offset: 15px;
+    color: #FFF;
 }
