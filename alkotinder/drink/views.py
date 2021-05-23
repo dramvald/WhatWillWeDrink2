@@ -14,6 +14,11 @@ def get_random_drink(request):
     return render(request, "get_random_drink.html", context=random_drink)
 
 
+def favorites(request):
+    drink_list = Drink.objects.all()
+    return render(request, "favorites.html", {"drink_list": drink_list})
+
+
 def add_favorite_drink(request):
     random_drink = cache.get("random_drink")
 
