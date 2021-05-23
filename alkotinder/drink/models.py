@@ -7,3 +7,6 @@ class Drink(models.Model):
     instruction = models.TextField("Instruction")
     ingredients = models.CharField("Ingredients", max_length=300)
     measures = models.CharField("Measures", max_length=300)
+
+    def __str__(self):
+        return self.name_drink
