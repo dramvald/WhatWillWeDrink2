@@ -75,7 +75,10 @@
             </div>
         </div>
         <div align="center">
-            <button formaction="{% url 'add_favorite_drink' %}" type="submit" >Add to favorites</button>
+            <form action="{% url 'add_favorite_drink' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" >Add to favorites</button>
+            </form>
             <button type="button"  onclick="window.location.reload()">Next cocktail</button>
         </div>
 
