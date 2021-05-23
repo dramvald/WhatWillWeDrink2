@@ -21,9 +21,8 @@ def favorites(request):
 
 def add_favorite_drink(request):
     get_from_cache = cache.get("random_drink")
-    import pdb
-
-    pdb.set_trace()
+    # import pdb
+    # pdb.set_trace()
 
     name_drink = get_from_cache["name"]
     url = get_from_cache["img_url"]
@@ -38,4 +37,4 @@ def add_favorite_drink(request):
         measures=meas,
     )
     drink_obj.save()
-    return HttpResponseRedirect()
+    return HttpResponseRedirect("/")
