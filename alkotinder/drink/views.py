@@ -15,7 +15,7 @@ def get_random_drink(request):
 
 
 def list_favorite_drinks(request):
-    drink_list = Drink.objects.all()
+    drink_list = Drink.objects.order_by("-id")
     return render(request, "favorites.html", {"drink_list": drink_list})
 
 
@@ -36,3 +36,8 @@ def add_favorite_drink(request):
     )
     drink_objects.save()
     return HttpResponseRedirect("/")
+
+
+def show_favorite_drink(request, drink_id):
+    drink = Drink.objects.get(id=drink_id)
+    return render(request, "show_favorites_drink.html", {"drink": drink})
