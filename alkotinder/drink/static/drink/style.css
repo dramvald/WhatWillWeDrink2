@@ -1,6 +1,7 @@
 body{
     background: #EAE7DC;
     font-family: Comic Sans MS;
+    color: #775218;
 }
 header .container-fluid {
     background: #D8C3A5;
@@ -30,9 +31,11 @@ h1 {
 }
 td{
     font-size: 16pt;
+    color: #775218;
 }
 th{
     font-size: 18pt;
+    color: #775218;
 }
 
 button {
@@ -63,4 +66,11 @@ button:focus {
     outline-color: rgba(255, 255, 255, 0);
     outline-offset: 15px;
     color: #FFF;
+}
+a {
+    color: #775218;
+    text-decoration: blink;
+}
+a:hover {
+    color: #a27d0f;
 }
