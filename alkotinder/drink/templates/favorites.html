@@ -48,8 +48,8 @@
                  <tr ><h1 align="center">Selected cocktails</h1></tr>
                      {% if drink_list %}
                      {% for i in drink_list %}
-                 <tr><td width="20%"><img src= {{i.drink_url}} class="img-thumbnail" width="150px" height="130px" alt="Drink"></td>
-                     <td width="80%"><a href="#" name="a1">{{i.name_drink}}</a></td></tr>
+                 <tr><td width="15%"><img src= {{i.drink_url}} class="img-thumbnail" width="150px" height="130px" alt="Drink"></td>
+                     <td width="50"><a href="#" name="a1">{{i.name_drink}}</a></td></tr>
                      {% endfor %}
                      {% else %}
                      Сocktails not found!

@@ -14,7 +14,7 @@ def get_random_drink(request):
     return render(request, "get_random_drink.html", context=random_drink)
 
 
-def favorites(request):
+def list_favorite_drinks(request):
     drink_list = Drink.objects.all()
     return render(request, "favorites.html", {"drink_list": drink_list})
 
@@ -23,16 +23,16 @@ def add_favorite_drink(request):
     random_drink = cache.get("random_drink")
 
     name_drink = random_drink["name"]
-    url = random_drink["img_url"]
-    instr = random_drink["instruction"]
-    ingr = random_drink["ingredients"]
-    meas = random_drink["measures"]
-    drink_obj = Drink(
+    drink_url = random_drink["img_url"]
+    instruction = random_drink["instruction"]
+    ingredients = random_drink["ingredients"]
+    measures = random_drink["measures"]
+    drink_objects = Drink(
         name_drink=name_drink,
-        drink_url=url,
-        instruction=instr,
-        ingredients=ingr,
-        measures=meas,
+        drink_url=drink_url,
+        instruction=instruction,
+        ingredients=ingredients,
+        measures=measures,
     )
-    drink_obj.save()
+    drink_objects.save()
     return HttpResponseRedirect("/")
