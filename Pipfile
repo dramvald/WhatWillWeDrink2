@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 requests = "*"
 black = "*"
+psycopg2 = "*"
 
 [requires]
 python_version = "3.8"
