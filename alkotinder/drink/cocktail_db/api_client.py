@@ -28,8 +28,10 @@ class CocktailDBApiClient:
             "name": name,
             "img_url": img_url,
             "instruction": instruction,
-            "ingredients": ingredients,
-            "measures": measures,
+            "ingredients": list(filter(None, ingredients)),
+            "measures": list(filter(None, measures)),
+            # "ingredients": ingredients,
+            # "measures": measures,
         }
 
     def _get_values_of_keys_sorted_by_index(self, drink, name):
