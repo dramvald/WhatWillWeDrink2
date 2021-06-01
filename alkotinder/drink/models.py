@@ -9,9 +9,7 @@ class Drink(models.Model):
     ingredients = ArrayField(
         models.CharField("Ingredients", max_length=300), blank=True
     )
-    # ingredients = models.CharField("Ingredients", max_length=300)
     measures = ArrayField(models.CharField("Measures", max_length=300), blank=True)
-    # measures = models.CharField("Measures", max_length=300)
 
     def __str__(self):
         return self.name_drink

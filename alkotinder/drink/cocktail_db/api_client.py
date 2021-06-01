@@ -30,8 +30,6 @@ class CocktailDBApiClient:
             "instruction": instruction,
             "ingredients": list(filter(None, ingredients)),
             "measures": list(filter(None, measures)),
-            # "ingredients": ingredients,
-            # "measures": measures,
         }
 
     def _get_values_of_keys_sorted_by_index(self, drink, name):
@@ -39,6 +37,6 @@ class CocktailDBApiClient:
         pq = PriorityQueue()
         for key, value in drink.items():
             if isinstance(key, str) and key.startswith(name):
-                if value is not None:
+                if value:
                     pq.put((int(key[-1]), value))
         return [i[1] for i in pq.queue]
