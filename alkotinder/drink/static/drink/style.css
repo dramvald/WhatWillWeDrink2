@@ -70,6 +70,7 @@ button:focus {
 a {
     color: #775218;
     text-decoration: blink;
+    font-size: 18pt;
 }
 a:hover {
     color: #a27d0f;

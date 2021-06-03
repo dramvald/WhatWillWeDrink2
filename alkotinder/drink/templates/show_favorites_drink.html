@@ -19,11 +19,10 @@
         <!-- Image and text -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid" >
-              <a class="navbar-brand" href="#">
+              <a class="navbar-brand" href="{% url 'get_random_drink' %}">
                   {% load static %}
-                  <img src="{% static 'drink/images/image.png' %}" alt="" width="45" height="39">
+                  <img src="{% static 'drink/images/log.png' %}" alt="" width="170" height="60">
               </a>
-              <a class="navbar-brand" href="#">Drinkder</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
               </button>
@@ -60,14 +59,12 @@
                     </tr>
                     <td>
                         <ul>
-                            <!--{{ drink.ingredients }}-->
                             {% for ingredient in drink.ingredients %}
                             <li>{{ingredient}}</li>
                             {% endfor %}
                         </ul>
                     </td><td height="5%">
                         <ul>
-                            <!--{{ drink.measures }}-->
                             {% for measure in drink.measures %}
                             <li>{{measure}}</li>
                             {% endfor %}
