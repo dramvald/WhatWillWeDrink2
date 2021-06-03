@@ -10,7 +10,6 @@ def get_random_drink(request):
     random_drink = cocktail_db_api_client.get_random_drink()
 
     cache.set("random_drink", random_drink)
-
     return render(request, "get_random_drink.html", context=random_drink)
 
 
@@ -41,3 +40,9 @@ def add_favorite_drink(request):
 def show_favorite_drink(request, drink_id):
     drink = Drink.objects.get(id=drink_id)
     return render(request, "show_favorites_drink.html", {"drink": drink})
+
+
+def delete_favorite_drink(request, drink_id):
+    drink = Drink.objects.get(id=drink_id)
+    drink.delete()
+    return HttpResponseRedirect("/favorites")
