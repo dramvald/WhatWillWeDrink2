@@ -23,7 +23,6 @@
                   {% load static %}
                   <img src="{% static 'drink/images/log.png' %}" alt="" width="170" height="60">
               </a>
-              <!--<a class="navbar-brand" href="#">Drinkder</a>-->
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                   <span class="navbar-toggler-icon"></span>
               </button>
@@ -77,11 +76,19 @@
         <div align="center">
             <form action="{% url 'add_favorite_drink' %}" method="post">
                 {% csrf_token %}
-                <button type="submit" >Add to favorites</button>
-            </form>
-            <button type="button"  onclick="window.location.reload()">Next cocktail</button>
-        </div>
+                <button type="submit" >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                    Add to favorites</button>
 
+                <button type="button"  onclick="window.location.reload()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" fill="currentColor" class="bi bi-arrow-right-circle-fill" viewBox="0 0 20 20">
+                        <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z"/>
+                    </svg>
+                    Next cocktail</button>
+            </form>
+        </div>
     </section>
 </body>
 </html>
