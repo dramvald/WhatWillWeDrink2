@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
+    "accounts.apps.AccountsConfig",
 ]
 
 MIDDLEWARE = [
@@ -86,6 +88,15 @@ WSGI_APPLICATION = "alkotinder.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
+
+    # "default": {
+    #   "ENGINE": "django.db.backends.postgresql_psycopg2",
+    #    "NAME": "drinkderbd",
+    #    "USER": "drinkderuser",
+    #    "PASSWORD": "passwordb",
+    #    "HOST": "localhost",
+    #    "PORT": "",
+    # }
     "default": env.db()
 }
 
@@ -141,3 +152,5 @@ CACHES = {
         "OPTIONS": {"MAX_ENTRIES": 1},
     }
 }
+
+AUTH_USER_MODEL = 'accounts.User'
