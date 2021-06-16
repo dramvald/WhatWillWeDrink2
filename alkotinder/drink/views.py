@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.core.cache import cache
+from django.views.generic import TemplateView
+
 from .models import Drink
 from django.http import HttpResponseRedirect
 from drink.cocktail_db.api_client import CocktailDBApiClient

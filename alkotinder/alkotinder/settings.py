@@ -10,19 +10,32 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os.path
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env(env_file=os.path.join(BASE_DIR, ".env"))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-mg13s)3a+gf-xvmggot#vs60x0&odvxn)ra8^2-p1!h0e@)06b"
+# Raises django's ImproperlyConfigured exception if SECRET_KEY not in os.environ
+# SECRET_KEY = "django-insecure-mg13s)3a+gf-xvmggot#vs60x0&odvxn)ra8^2-p1!h0e@)06b"
+SECRET_KEY = env("SECRET_KEY")
 
+# False if not in os.environ
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
+DEBUG = env("DEBUG")
+
 
 ALLOWED_HOSTS = []
 
@@ -69,19 +82,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "alkotinder.wsgi.application"
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "drinderbd",
-        "USER": "drinderuser",
-        "PASSWORD": "passwordb",
-        "HOST": "localhost",
-        "PORT": "",
-    }
+    "default": env.db()
 }
 
 
