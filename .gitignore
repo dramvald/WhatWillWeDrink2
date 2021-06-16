@@ -123,11 +123,10 @@ celerybeat.pid
 
 # Environments
 # ..env
+.env
 .env/
 .venv/
-.env/
 venv/
-.env/
 env.bak/
 venv.bak/
 pythonenv*
