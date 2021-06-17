@@ -88,7 +88,7 @@ WSGI_APPLICATION = "alkotinder.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-
+    "default": env.db(),
     # "default": {
     #   "ENGINE": "django.db.backends.postgresql_psycopg2",
     #    "NAME": "drinkderbd",
@@ -97,7 +97,7 @@ DATABASES = {
     #    "HOST": "localhost",
     #    "PORT": "",
     # }
-    "default": env.db()
+
 }
 
 
