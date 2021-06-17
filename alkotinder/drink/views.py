@@ -8,10 +8,15 @@ from drink.cocktail_db.api_client import CocktailDBApiClient
 
 
 def get_random_drink(request):
+    """
+    Эта функция выводит случайный коктейль на главную страницу сайта.
+    Переменной cocktail_db_api_client присваивается класс, в результате выполнения которого
+    мы получаем случайный напиток со всеми необходимыми данными.
+    """
     cocktail_db_api_client = CocktailDBApiClient()
     random_drink = cocktail_db_api_client.get_random_drink()
 
-    cache.set("random_drink", random_drink)
+    cache.set("random_drink", random_drink)    # сохраняем данные со страницы в кэш
     return render(request, "get_random_drink.html", context=random_drink)
 
 
