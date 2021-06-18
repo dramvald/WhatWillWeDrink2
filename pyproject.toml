@@ -2,7 +2,7 @@
 name = "whatwillwedrink2"
 version = "0.1.0"
 description = ""
-authors = ["Kirill Petrovskiu <kirillpior@gmail.com>"]
+authors = ["Yauheni Bokach <dharmagetic@gmail.com>", "Kirill Petrovskiu <kirillpior@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"

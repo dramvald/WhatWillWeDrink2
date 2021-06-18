@@ -89,15 +89,6 @@ WSGI_APPLICATION = "alkotinder.wsgi.application"
 
 DATABASES = {
     "default": env.db(),
-    # "default": {
-    #   "ENGINE": "django.db.backends.postgresql_psycopg2",
-    #    "NAME": "drinkderbd",
-    #    "USER": "drinkderuser",
-    #    "PASSWORD": "passwordb",
-    #    "HOST": "localhost",
-    #    "PORT": "",
-    # }
-
 }
 
 
