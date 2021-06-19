@@ -7,8 +7,8 @@ from .models import User
 
 
 class AccountUserAdmin(UserAdmin):
-    #add_form = AccountUserCreationForm
-    #form = AccountUserChangeForm
+    add_form = AccountUserCreationForm
+    form = AccountUserChangeForm
     model = User
     list_display = ["email", 'username', ]
 
