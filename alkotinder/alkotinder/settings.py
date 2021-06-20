@@ -145,5 +145,6 @@ CACHES = {
 }
 
 AUTH_USER_MODEL = 'accounts.User'
+
 LOGIN_REDIRECT_URL = 'get_random_drink'
 LOGOUT_REDIRECT_URL = 'get_random_drink'

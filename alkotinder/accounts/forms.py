@@ -4,10 +4,20 @@ from .models import User
 
 
 class AccountUserCreationForm(UserCreationForm):
+    email = forms.CharField(label='E-mail', widget=forms.EmailInput(attrs={'class': 'form-input'}))
+    username = forms.CharField(label='Username', widget=forms.TextInput(attrs={'class': 'form-input'}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+    password2 = forms.CharField(label='Repeat password ', widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
     class Meta(UserCreationForm):
         model = User
-        fields = ('email', 'username',)
+        fields = ('email', 'username', 'password1', 'password2',)
+        widgets = {
+            'email': forms.EmailInput(attrs={'class': 'form-input'}),
+            'username': forms.TextInput(attrs={'class': 'form-input'}),
+            'password1': forms.PasswordInput(attrs={'class': 'form-input'}),
+            'password2': forms.PasswordInput(attrs={'class': 'form-input'}),
+        }
 
 
 class AccountUserChangeForm(UserChangeForm):
