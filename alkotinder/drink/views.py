@@ -41,7 +41,7 @@ def add_favorite_drink(request):
         measures=measures,
     )
     drink_objects.save()
-    return HttpResponseRedirect("/")
+    return HttpResponseRedirect("/drink")
 
 
 def show_favorite_drink(request, drink_id):

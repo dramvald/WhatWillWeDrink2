@@ -18,7 +18,7 @@
         <!-- Image and text -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <div class="container-fluid" >
-              <a class="navbar-brand" href="{% url 'get_random_drink' %}">
+              <a class="navbar-brand" href="">
                   {% load static %}
                   <img src="{% static 'drink/images/log.png' %}" alt="" width="170" height="60">
               </a>
@@ -32,7 +32,7 @@
 
         <div class="container-xl">
             <div class="row">
-                <div class="col-12 "><h1 align="center">Log In</h1></div>
+                <div class="col-12 "><h1 align="center">Welcome to the Drinkder website</h1></div>
                 <div class="col-12 align-self-center" align="center">
                     <form method="post">
                       {% csrf_token %}
@@ -44,9 +44,23 @@
                             <div class="form-error"><h4>{{ f.errors }}</h4></div>
                         </div>
                         {% endfor %}
-                      <!--{{ form.as_p }}-->
+                        <!--{% if form.errors %}
+                          <p>Your username and password didn't match. Please try again.</p>
+                        {% endif %}
+
+                        {% if next %}
+                          {% if user.is_authenticated %}
+                            <p>Your account doesn't have access to this page. To proceed,
+                            please login with an account that has access.</p>
+                          {% else %}
+                            <p>Please login to see this page.</p>
+                          {% endif %}
+                        {% endif %}
+                      {{ form.as_p }}-->
                       <button type="submit">Log In</button>
                     </form>
+                    <p class="nav-link" style="font-size: 18pt;">If you have an account, log in, if not, <a href="{% url 'signup' %}" style="color: black;">register</a> on the site.</p>
+
                 </div>
             </div>
         </div>
