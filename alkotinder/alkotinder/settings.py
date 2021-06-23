@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     "accounts.apps.AccountsConfig",
 ]
 
@@ -144,7 +143,7 @@ CACHES = {
     }
 }
 
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = "accounts.User"
 
-LOGIN_REDIRECT_URL = 'get_random_drink'
-LOGOUT_REDIRECT_URL = 'login'
+LOGIN_REDIRECT_URL = "get_random_drink"
+LOGOUT_REDIRECT_URL = "login"

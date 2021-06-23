@@ -41,26 +41,14 @@
                         <div class="mb-3">
                             <label class="form-label" for=" {{ f.id_for_label }} " style="font-size: 18pt;">{{ f.label }}: </label>
                             <p>{{ f }}</p>
-                            <div class="form-error"><h4>{{ f.errors }}</h4></div>
+
                         </div>
                         {% endfor %}
-                        <!--{% if form.errors %}
-                          <p>Your username and password didn't match. Please try again.</p>
-                        {% endif %}
-
-                        {% if next %}
-                          {% if user.is_authenticated %}
-                            <p>Your account doesn't have access to this page. To proceed,
-                            please login with an account that has access.</p>
-                          {% else %}
-                            <p>Please login to see this page.</p>
-                          {% endif %}
-                        {% endif %}
-                      {{ form.as_p }}-->
+                        <div class="form-error"><h4>{{ form.non_field_errors }}</h4></div>
+                      <!--{{ form.as_p }}-->
                       <button type="submit">Log In</button>
                     </form>
                     <p class="nav-link" style="font-size: 18pt;">If you have an account, log in, if not, <a href="{% url 'signup' %}" style="color: black;">register</a> on the site.</p>
-
                 </div>
             </div>
         </div>
