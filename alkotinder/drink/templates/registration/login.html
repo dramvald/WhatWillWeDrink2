@@ -10,6 +10,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'drink/style.css' %}">
+    <style>
+       li {
+        list-style-type: none; /* Убираем маркеры */
+       }
+       ul {
+        margin-left: 0;
+        padding-left: 0;
+       }
+  </style>
 </head>
 <body>
 <!-- JavaScript Bundle with Popper -->
@@ -29,25 +38,38 @@
         </nav>
     </header>
     <section>
-
         <div class="container-xl">
             <div class="row">
                 <div class="col-12 "><h1 align="center">Welcome to the Drinkder website</h1></div>
-                <div class="col-12 align-self-center" align="center">
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-lg-2"></div>
+                <div class="col-md-auto">
                     <form method="post">
-                      {% csrf_token %}
-
-                        {% for f in form %}
+                        {% csrf_token %}
                         <div class="mb-3">
-                            <label class="form-label" for=" {{ f.id_for_label }} " style="font-size: 18pt;">{{ f.label }}: </label>
-                            <p>{{ f }}</p>
-
+                            <label for="id_username" class="form-label" style="font-size: 18pt;">Email address</label>
+                            <input class="form-control" type="text" name="username" autofocus autocapitalize="none" autocomplete="username" required id="id_username" style="text-transform: lowercase;">
                         </div>
-                        {% endfor %}
+                        <div class="mb-3">
+                            <label for="id_password" class="form-label" style="font-size: 18pt;">Password</label>
+                            <input class="form-control" type="password" name="password" autocomplete="current-password" required id="id_password">
+                        </div>
+                        <!--{{ form.as_p }}-->
+                        <button type="submit">Log in</button>
                         <div class="form-error"><h4>{{ form.non_field_errors }}</h4></div>
-                      <!--{{ form.as_p }}-->
-                      <button type="submit">Log In</button>
                     </form>
+                </div>
+                <div class="col col-lg-2"></div>
+            </div>
+        </div>
+
+        <div class="container-xl">
+            <div class="row">
+                <div class="col-12 align-self-center" align="center">
                     <p class="nav-link" style="font-size: 18pt;">If you have an account, log in, if not, <a href="{% url 'signup' %}" style="color: black;">register</a> on the site.</p>
                 </div>
             </div>

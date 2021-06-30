@@ -10,10 +10,13 @@ class AccountUserAdmin(UserAdmin):
     add_form = AccountUserCreationForm
     form = AccountUserChangeForm
     model = User
+
     list_display = [
         "email",
-        "username",
     ]
+    fieldsets = (('Personal info', {'fields': ('email', 'first_name', 'last_name')}),)     # Для страницы изменения
+                                                                                           # личной информации пользователя
+    ordering = ('email',)                                                        # Для упорядочения по полю email
 
 
 admin.site.register(User, AccountUserAdmin)
