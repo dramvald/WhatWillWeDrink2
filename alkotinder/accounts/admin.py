@@ -14,9 +14,11 @@ class AccountUserAdmin(UserAdmin):
     list_display = [
         "email",
     ]
-    fieldsets = (('Personal info', {'fields': ('email', 'first_name', 'last_name')}),)     # Для страницы изменения
-                                                                                           # личной информации пользователя
-    ordering = ('email',)                                                        # Для упорядочения по полю email
+    fieldsets = (
+        ("Personal info", {"fields": ("email", "first_name", "last_name")}),
+    )  # Для страницы изменения
+    # личной информации пользователя
+    ordering = ("email",)  # Для упорядочения по полю email
 
 
 admin.site.register(User, AccountUserAdmin)

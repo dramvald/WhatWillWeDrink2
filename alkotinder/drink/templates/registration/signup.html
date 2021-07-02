@@ -65,7 +65,9 @@
                         </div>
                         <!--{{ form.as_p }}-->
                         <button type="submit">Sign Up</button>
-                        <div class="form-error"><h4>{{ form.errors }}</h4></div>
+                        {% for f in form %}
+                        <div class="form-error"><h4>{{ f.errors }}</h4></div>
+                        {% endfor %}
                     </form>
                 </div>
                 <div class="col col-lg-2"></div>
