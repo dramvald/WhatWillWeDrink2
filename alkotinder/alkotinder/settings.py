@@ -143,7 +143,7 @@ CACHES = {
     }
 }
 
-AUTH_USER_MODEL = "accounts.User"
+AUTH_USER_MODEL = "accounts.User"  # говорим django использовать модель User в accounts, вместо стандартной модели
 
-LOGIN_REDIRECT_URL = "get_random_drink"
-LOGOUT_REDIRECT_URL = "login"
+LOGIN_REDIRECT_URL = "get_random_drink"  # поле кода выполняется после авторизации пользователя, переходя на страницу get_random_drink
+LOGOUT_REDIRECT_URL = "login"  # поле кода выполняется после того как пользователь разлогиниваеться (Выходит), переходя на станицу login

@@ -11,7 +11,7 @@ def get_random_drink(request):
     """
     Эта функция выводит случайный коктейль на главную страницу сайта.
     Переменной cocktail_db_api_client присваивается класс, в результате выполнения которого
-    мы получаем случайный напиток со всеми необходимыми данными.
+    мы получаем случайный напиток со всеми необходимыми данными. Далее добавляем его в кэш.
     """
     cocktail_db_api_client = CocktailDBApiClient()
     random_drink = cocktail_db_api_client.get_random_drink()
@@ -21,11 +21,14 @@ def get_random_drink(request):
 
 
 def list_favorite_drinks(request):
+    """Выводим список сохраненных напитков на отдельную страницу."""
     drink_list = Drink.objects.order_by("-id")
     return render(request, "favorites.html", {"drink_list": drink_list})
 
 
 def add_favorite_drink(request):
+    """Сохраняем напиток, функция привязана к кнопке на старице случайных напитков. Данные напитка, ранее сохраненные
+    в кэш, сохраняются в базу данных."""
     random_drink = cache.get("random_drink")
 
     name_drink = random_drink["name"]
@@ -45,11 +48,13 @@ def add_favorite_drink(request):
 
 
 def show_favorite_drink(request, drink_id):
+    """Выбираем напиток на странице любимых напитков и открываем по нему всю информацию на отдельной странице."""
     drink = Drink.objects.get(id=drink_id)
     return render(request, "show_favorites_drink.html", {"drink": drink})
 
 
 def delete_favorite_drink(request, drink_id):
+    """Для удаления напитка на странице любимых напитков и на станице выбранного, из любимых напитков ,напитка."""
     drink = Drink.objects.get(id=drink_id)
     drink.delete()
     return HttpResponseRedirect("/favorites")

@@ -17,8 +17,8 @@ class AccountUserAdmin(UserAdmin):
     fieldsets = (
         ("Personal info", {"fields": ("email", "first_name", "last_name")}),
     )  # Для страницы изменения
-    # личной информации пользователя
-    ordering = ("email",)  # Для упорядочения по полю email
+    # личной информации пользователя.
+    ordering = ("email",)  # Для упорядочения сортировкой, по полю email
 
 
 admin.site.register(User, AccountUserAdmin)

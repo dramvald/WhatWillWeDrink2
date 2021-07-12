@@ -14,6 +14,9 @@ from .models import User
 
 
 class AccountUserCreationForm(UserCreationForm):
+    """Форма используется для страницы SignUp, заданы поля и их формат. Класс clean_email необходим для
+    форматирование страницы email, а именно приведения всех букв к нижнему регистру используя метод lower()."""
+
     email = forms.EmailField(
         label="E-mail", widget=forms.EmailInput(attrs={"class": "form-input"})
     )
@@ -26,6 +29,8 @@ class AccountUserCreationForm(UserCreationForm):
     )
 
     class Meta(UserCreationForm):
+        """Задаем использование модели User, и определяем поля формы в fields"""
+
         model = User
         fields = (
             "email",
@@ -40,12 +45,17 @@ class AccountUserCreationForm(UserCreationForm):
 
 
 class AccountUserChangeForm(UserChangeForm):
+    """Задаем использование модели User, и определяем поля формы в fields"""
+
     class Meta:
         model = User
         fields = ("email",)
 
 
 class AccountAuthenticationForm(AuthenticationForm):
+    """Форма предназначена исключительно для добавления функции clean_username, которая форматирует поле username
+    и приводит все буквы к нижнему регистру используя метод lower()."""
+
     username = UsernameField(widget=forms.TextInput(attrs={"autofocus": True}))
 
     def clean_username(self):
