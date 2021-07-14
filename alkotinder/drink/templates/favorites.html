@@ -77,17 +77,13 @@
              </table>-->
              <table class="table table-striped table-hover" >
                  <tr ><h1 align="center">Selected cocktails</h1></tr>
-                     {% if favorite_drink_list %}
                      {% for i in favorite_drink_list %}
-                     {% if i.user.id == user.id %}
-                 <tr><td width="15%"><img src= {{i.drink.drink_url}} class="img-thumbnail" width="150px" height="130px" alt="Drink"></td>
-                     <td width="50"><a href="{% url 'show_favorite_drink' i.drink.id %}">{{i.drink.name_drink}}</a></td>
-                     <td width="50"><a href="{% url 'delete_favorite_drink' i.drink.id %}">Delete</a></td></tr>
-                     {% endif %}
+                        {% if i.user.id == user.id %}
+                         <tr><td width="15%"><img src= {{i.drink.drink_url}} class="img-thumbnail" width="150px" height="130px" alt="Drink"></td>
+                             <td width="50"><a href="{% url 'show_favorite_drink' i.drink.id %}">{{i.drink.name_drink}}</a></td>
+                             <td width="50"><a href="{% url 'delete_favorite_drink' i.drink.id %}">Delete</a></td></tr>
+                        {% endif %}
                      {% endfor %}
-                     {% else %}
-                     Cocktails not found!
-                     {% endif %}
              </table>
             </div>
         </div>

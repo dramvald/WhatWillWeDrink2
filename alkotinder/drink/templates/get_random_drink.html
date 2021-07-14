@@ -94,7 +94,7 @@
             </div>
         </div>
         <div align="center">
-            <form action="{% url 'add_favorite_drink' %}" method="post">
+            <form action="{% url 'add_favorite_drink' user.id %}" method="post">
                 {% csrf_token %}
                 <button type="submit" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 20 20">

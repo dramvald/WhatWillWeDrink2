@@ -3,6 +3,8 @@ from django.core.cache import cache
 from django.views.generic import TemplateView
 
 from .models import Drink, FavoriteDrink
+from accounts.models import User
+
 from django.http import HttpResponseRedirect
 from drink.cocktail_db.api_client import CocktailDBApiClient
 
@@ -24,10 +26,12 @@ def list_favorite_drinks(request):
     """Выводим список сохраненных напитков на отдельную страницу."""
     drink_list = Drink.objects.order_by("-id")
     favorite_drink_list = FavoriteDrink.objects.order_by("-id")
+    # check_favorite_drink_list = FavoriteDrink.objects.filter(user__id=user_id)
+
     return render(request, "favorites.html", {"drink_list": drink_list, "favorite_drink_list": favorite_drink_list})
 
 
-def add_favorite_drink(request):
+def add_favorite_drink(request, user_id):
     """Сохраняем напиток, функция привязана к кнопке на старице случайных напитков. Данные напитка, ранее сохраненные
     в кэш, сохраняются в базу данных."""
     random_drink = cache.get("random_drink")
@@ -45,6 +49,12 @@ def add_favorite_drink(request):
         measures=measures,
     )
     drink_objects.save()
+
+    drink_objects_id = drink_objects.id                                   # беру id напитка
+    get_drink = Drink.objects.get(id=drink_objects_id)                    # беру напиток по id
+    user_object = User.objects.get(id=user_id)                            # беру пользователя
+    favorite_drink_object = user_object.favoritedrink_set.create()        # создаю для пользователя поле, для связи с напитком
+    get_drink.favoritedrink_set.add(favorite_drink_object, bulk=False)    # добавляю напиток к созданному полю в модели FavoriteDrink
     return HttpResponseRedirect("/drink")
 
 
@@ -58,4 +68,4 @@ def delete_favorite_drink(request, drink_id):
     """Для удаления напитка на странице любимых напитков и на станице выбранного, из любимых напитков ,напитка."""
     drink = Drink.objects.get(id=drink_id)
     drink.delete()
-    return HttpResponseRedirect("/favorites")
+    return HttpResponseRedirect("/drink/favorites")
