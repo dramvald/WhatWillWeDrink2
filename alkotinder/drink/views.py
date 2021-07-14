@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.core.cache import cache
 from django.views.generic import TemplateView
 
-from .models import Drink
+from .models import Drink, FavoriteDrink
 from django.http import HttpResponseRedirect
 from drink.cocktail_db.api_client import CocktailDBApiClient
 
@@ -23,7 +23,8 @@ def get_random_drink(request):
 def list_favorite_drinks(request):
     """Выводим список сохраненных напитков на отдельную страницу."""
     drink_list = Drink.objects.order_by("-id")
-    return render(request, "favorites.html", {"drink_list": drink_list})
+    favorite_drink_list = FavoriteDrink.objects.order_by("-id")
+    return render(request, "favorites.html", {"drink_list": drink_list, "favorite_drink_list": favorite_drink_list})
 
 
 def add_favorite_drink(request):
