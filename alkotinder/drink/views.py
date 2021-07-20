@@ -50,11 +50,11 @@ def add_favorite_drink(request, user_id):
     )
     drink_objects.save()
 
-    drink_objects_id = drink_objects.id                                   # беру id напитка
-    get_drink = Drink.objects.get(id=drink_objects_id)                    # беру напиток по id
+    # drink_objects_id = drink_objects.id                                   # беру id напитка
+    # get_drink = Drink.objects.get(id=drink_objects_id)                    # беру напиток по id
     user_object = User.objects.get(id=user_id)                            # беру пользователя
     favorite_drink_object = user_object.favoritedrink_set.create()        # создаю для пользователя поле, для связи с напитком
-    get_drink.favoritedrink_set.add(favorite_drink_object, bulk=False)    # добавляю напиток к созданному полю в модели FavoriteDrink
+    drink_objects.favoritedrink_set.add(favorite_drink_object, bulk=False)    # добавляю напиток к созданному полю в модели FavoriteDrink
     return HttpResponseRedirect("/drink")
 
 
