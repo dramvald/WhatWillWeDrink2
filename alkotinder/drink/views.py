@@ -36,13 +36,13 @@ def add_favorite_drink(request, user_id):
     в кэш, сохраняются в базу данных."""
     random_drink = cache.get("random_drink")
 
-    name_drink = random_drink["name"]
+    name = random_drink["name"]
     drink_url = random_drink["img_url"]
     instruction = random_drink["instruction"]
     ingredients = random_drink["ingredients"]
     measures = random_drink["measures"]
     drink_object = Drink(
-        name_drink=name_drink,
+        name=name,
         drink_url=drink_url,
         instruction=instruction,
         ingredients=ingredients,
