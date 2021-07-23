@@ -24,8 +24,8 @@ def get_random_drink(request):
 
 def list_favorite_drinks(request, user_id):
     """Выводим список сохраненных напитков на отдельную страницу."""
-    user_object = User.objects.get(id=user_id)
-    favorite_drink_list = user_object.favoritedrink_set.order_by('-id')
+    user = User.objects.get(id=user_id)
+    favorite_drink_list = user.favoritedrink_set.order_by('-id')
 
     return render(request, "favorites.html", {"favorite_drink_list": favorite_drink_list})
 
@@ -49,8 +49,8 @@ def add_favorite_drink(request, user_id):
     )
     drink_object.save()
 
-    user_object = User.objects.get(id=user_id)                            # беру пользователя
-    favorite_drink_object = user_object.favoritedrink_set.create()        # создаю для пользователя поле, для связи с напитком
+    user = User.objects.get(id=user_id)                            # беру пользователя
+    favorite_drink_object = user.favoritedrink_set.create()        # создаю для пользователя поле, для связи с напитком
     drink_object.favoritedrink_set.add(favorite_drink_object, bulk=False)    # добавляю напиток к созданному полю в модели FavoriteDrink
     return HttpResponseRedirect("/drink")
 
