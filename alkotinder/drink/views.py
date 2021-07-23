@@ -61,7 +61,7 @@ def show_favorite_drink(request, drink_id):
     return render(request, "show_favorites_drink.html", {"drink": drink})
 
 
-def delete_favorite_drink(request, drink_id,user_id):
+def delete_favorite_drink(request, drink_id, user_id):
     """Для удаления напитка на странице любимых напитков и на станице выбранного, из любимых напитков ,напитка."""
     drink = Drink.objects.get(id=drink_id)
     drink.delete()

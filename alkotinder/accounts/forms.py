@@ -8,11 +8,6 @@ from django.contrib.auth.forms import (
 from .models import User
 
 
-# class AccountEmailField(forms.EmailField):
-#    def clean(self, value):
-#       return value.lower()
-
-
 class AccountUserCreationForm(UserCreationForm):
     """Форма используется для страницы SignUp, заданы поля и их формат. Класс clean_email необходим для
     форматирование страницы email, а именно приведения всех букв к нижнему регистру используя метод lower()."""
