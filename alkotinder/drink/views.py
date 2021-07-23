@@ -24,9 +24,6 @@ def get_random_drink(request):
 
 def list_favorite_drinks(request, user_id):
     """Выводим список сохраненных напитков на отдельную страницу."""
-    # drink_list = Drink.objects.order_by("-id")
-    # favorite_drink_list = FavoriteDrink.objects.order_by("-id")
-    # check_favorite_drink_list = FavoriteDrink.objects.filter(user__id=user_id)
     user_object = User.objects.get(id=user_id)
     favorite_drink_list = user_object.favoritedrink_set.order_by('-id')
 
