@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 
 from .models import Drink, FavoriteDrink
 from accounts.models import User
+from django.urls import reverse
 
 from django.http import HttpResponseRedirect
 from drink.cocktail_db.api_client import CocktailDBApiClient
@@ -51,7 +52,7 @@ def add_favorite_drink(request, user_id):
 
     user = User.objects.get(id=user_id)                            # беру пользователя по id
     FavoriteDrink.objects.create(user=user, drink=drink_object)      # создаю в FavoriteDrink поле, где связываю пользователя и добавляемый напиток
-    return HttpResponseRedirect("/drink")
+    return HttpResponseRedirect(reverse("get_random_drink"))
 
 
 def show_favorite_drink(request, drink_id):
@@ -60,8 +61,8 @@ def show_favorite_drink(request, drink_id):
     return render(request, "show_favorites_drink.html", {"drink": drink})
 
 
-def delete_favorite_drink(request, drink_id):
+def delete_favorite_drink(request, drink_id,user_id):
     """Для удаления напитка на странице любимых напитков и на станице выбранного, из любимых напитков ,напитка."""
     drink = Drink.objects.get(id=drink_id)
     drink.delete()
-    return HttpResponseRedirect("/drink/favorites")
+    return HttpResponseRedirect(reverse("list_favorite_drinks", args=[user_id]))

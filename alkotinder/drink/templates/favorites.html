@@ -68,7 +68,7 @@
                      {% for i in favorite_drink_list %}
                          <tr><td width="15%"><img src= {{i.drink.drink_url}} class="img-thumbnail" width="150px" height="130px" alt="Drink"></td>
                              <td width="50"><a href="{% url 'show_favorite_drink' i.drink.id %}">{{i.drink.name_drink}}</a></td>
-                             <td width="50"><a href="{% url 'delete_favorite_drink' i.drink.id %}">Delete</a></td></tr>
+                             <td width="50"><a href="{% url 'delete_favorite_drink' i.drink.id user.id %}">Delete</a></td></tr>
                      {% endfor %}
              </table>
             </div>
