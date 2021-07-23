@@ -22,13 +22,15 @@ def get_random_drink(request):
     return render(request, "get_random_drink.html", context=random_drink)
 
 
-def list_favorite_drinks(request):
+def list_favorite_drinks(request, user_id):
     """Выводим список сохраненных напитков на отдельную страницу."""
-    drink_list = Drink.objects.order_by("-id")
-    favorite_drink_list = FavoriteDrink.objects.order_by("-id")
+    # drink_list = Drink.objects.order_by("-id")
+    # favorite_drink_list = FavoriteDrink.objects.order_by("-id")
     # check_favorite_drink_list = FavoriteDrink.objects.filter(user__id=user_id)
+    user_object = User.objects.get(id=user_id)
+    favorite_drink_list = user_object.favoritedrink_set.order_by('-id')
 
-    return render(request, "favorites.html", {"drink_list": drink_list, "favorite_drink_list": favorite_drink_list})
+    return render(request, "favorites.html", {"favorite_drink_list": favorite_drink_list})
 
 
 def add_favorite_drink(request, user_id):
