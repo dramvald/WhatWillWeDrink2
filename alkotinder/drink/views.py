@@ -41,16 +41,16 @@ def add_favorite_drink(request):
     instruction = random_drink["instruction"]
     ingredients = random_drink["ingredients"]
     measures = random_drink["measures"]
-    drink_object = Drink(
+    drink = Drink(
         name=name,
         drink_url=drink_url,
         instruction=instruction,
         ingredients=ingredients,
         measures=measures,
     )
-    drink_object.save()
+    drink.save()
 
-    FavoriteDrink.objects.create(user=request.user, drink=drink_object)      # создаю в FavoriteDrink поле, где связываю пользователя и добавляемый напиток
+    FavoriteDrink.objects.create(user=request.user, drink=drink)      # создаю в FavoriteDrink поле, где связываю пользователя и добавляемый напиток
                                                                              # request.user атрибут представляет текущего пользователя
     return HttpResponseRedirect(reverse("get_random_drink"))
 
