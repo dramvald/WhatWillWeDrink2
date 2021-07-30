@@ -29,7 +29,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                   <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                       <li class="navbar-link">
-                          <a href="{% url 'list_favorite_drinks' user.id %}" class="nav-link active" aria-current="page">Favorites</a>
+                          <a href="{% url 'list_favorite_drinks' %}" class="nav-link active" aria-current="page">Favorites</a>
                       </li>
                       <li class="navbar-link">
                           <a href="#" class="nav-link active" aria-current="page" >Blacklist</a>
@@ -94,7 +94,7 @@
             </div>
         </div>
         <div align="center">
-            <form action="{% url 'add_favorite_drink' user.id %}" method="post">
+            <form action="{% url 'add_favorite_drink' %}" method="post">
                 {% csrf_token %}
                 <button type="submit" >
                     <svg xmlns="http://www.w3.org/2000/svg" width="45" height="28" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 20 20">
