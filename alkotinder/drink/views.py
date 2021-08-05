@@ -26,13 +26,10 @@ def get_random_drink(request):
 def list_favorite_drinks(request):
     """Выводим список сохраненных напитков на отдельную страницу. Также здесь осуществляется поиск
     по имени напитка."""
-    search = request.GET.get('search')                                      # обращаюсь к объекту request, далее к словарю GET, вызываю метод get. в ('search') значение в скобках - ключевое слово.
+    search = request.GET.get('search', '')                                      # обращаюсь к объекту request, далее к словарю GET, вызываю метод get. в ('search') значение в скобках - ключевое слово.
     user = User.objects.get(id=request.user.id)                             # request.user.id атрибут представляет id текущего пользователя
-    if search:
-        favorite_drink_list = user.favoritedrink_set.order_by('-id').filter(drink__name__startswith=search)        # фильтр по названию напитка
-    else:
-        favorite_drink_list = user.favoritedrink_set.order_by('-id')
-
+    
+    favorite_drink_list = user.favoritedrink_set.order_by('-id').filter(drink__name__startswith=search)        # фильтр по названию напитка
     return render(request, "favorites.html", {"favorite_drink_list": favorite_drink_list})
 
 
