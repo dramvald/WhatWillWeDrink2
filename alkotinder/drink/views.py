@@ -19,18 +19,22 @@ def get_random_drink(request):
     cocktail_db_api_client = CocktailDBApiClient()
     random_drink = cocktail_db_api_client.get_random_drink()
 
-    cache.set("random_drink", random_drink)                                 # сохраняем данные со страницы в кэш
+    cache.set("random_drink", random_drink)  # сохраняем данные со страницы в кэш
     return render(request, "get_random_drink.html", context=random_drink)
 
 
 def list_favorite_drinks(request):
     """Выводим список сохраненных напитков на отдельную страницу. Также здесь осуществляется поиск
     по имени напитка."""
-    search = request.GET.get('search', '')                                      # обращаюсь к объекту request, далее к словарю GET, вызываю метод get. в ('search') значение в скобках - ключевое слово.
-    user = User.objects.get(id=request.user.id)                                 # request.user.id атрибут представляет id текущего пользователя
+    search = request.GET.get("search", "")  # Получаю значение GET параметра search.
+    user = request.user  # request.user.id атрибут представляет id текущего пользователя
 
-    favorite_drink_list = user.favoritedrink_set.order_by('-id').filter(drink__name__icontains=search)        # фильтр по названию напитка
-    return render(request, "favorites.html", {"favorite_drink_list": favorite_drink_list})
+    favorite_drink_list = user.favoritedrink_set.order_by("-id").filter(
+        drink__name__icontains=search
+    )  # фильтр по названию напитка
+    return render(
+        request, "favorites.html", {"favorite_drink_list": favorite_drink_list}
+    )
 
 
 def add_favorite_drink(request):
@@ -52,8 +56,10 @@ def add_favorite_drink(request):
     )
     drink.save()
 
-    FavoriteDrink.objects.create(user=request.user, drink=drink)             # создаю в FavoriteDrink поле, где связываю пользователя и добавляемый напиток
-                                                                             # request.user атрибут представляет текущего пользователя
+    FavoriteDrink.objects.create(
+        user=request.user, drink=drink
+    )   # создаю в FavoriteDrink объект с двумя полями
+        # request.user атрибут представляет текущего пользователя
     return HttpResponseRedirect(reverse("get_random_drink"))
 
 
