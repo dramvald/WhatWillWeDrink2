@@ -13,10 +13,6 @@ class CocktailDBApiClient:
         data = requests.get(self.RANDOM_DRINK_API_URL).json()
         drink = data["drinks"][0]
 
-        # Рекурсивно запрашиваем напиток, пока не получим алкогольный
-        #if drink["strAlcoholic"] != "Alcoholic":
-            #return self.get_random_drink()
-
         name = drink["strDrink"]
         instruction = drink["strInstructions"]
         img_url = drink["strDrinkThumb"]
