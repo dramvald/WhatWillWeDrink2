@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from django.core.cache import cache
-from django.views.generic import TemplateView
 
 from .models import Drink, FavoriteDrink
-from accounts.models import User
 from django.urls import reverse
 
 from django.http import HttpResponseRedirect
@@ -26,21 +24,18 @@ def get_random_drink(request):
 def list_favorite_drinks(request):
     """Выводим список сохраненных напитков на отдельную страницу. Также здесь осуществляется поиск
     по имени напитка."""
-    search = request.GET.get("search", "")  # Получаю значение GET параметра search.
-    user = request.user  # request.user.id атрибут представляет id текущего пользователя
+    user = request.user
 
-    checkbox = request.GET.get("checkbox", "")
+    search = request.GET.get("search", "")
+    is_alhocolic = request.GET.get("is_alhocolic", "")
+
     favorite_drink_list = user.favoritedrink_set.order_by("-id").filter(
         drink__name__icontains=search
     )  # фильтр по названию напитка
-    if checkbox:
-        filter_favorite_drink_list = favorite_drink_list.filter(drink__drink_property__startswith=checkbox)
-    else:
-        filter_favorite_drink_list = user.favoritedrink_set.order_by("-id").filter(
-            drink__name__icontains=search
-        )
+    if is_alhocolic:
+        favorite_drink_list = favorite_drink_list.filter(drink__drink_property__startswith=is_alhocolic)
     return render(
-        request, "favorites.html", {"filter_favorite_drink_list": filter_favorite_drink_list}
+        request, "favorites.html", {"filter_favorite_drink_list": favorite_drink_list, "is_alhocolic": is_alhocolic}
     )
 
 
