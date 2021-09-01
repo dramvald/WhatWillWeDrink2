@@ -29,11 +29,18 @@ def list_favorite_drinks(request):
     search = request.GET.get("search", "")  # Получаю значение GET параметра search.
     user = request.user  # request.user.id атрибут представляет id текущего пользователя
 
+    checkbox = request.GET.get("checkbox", "")
     favorite_drink_list = user.favoritedrink_set.order_by("-id").filter(
         drink__name__icontains=search
     )  # фильтр по названию напитка
+    if checkbox:
+        filter_favorite_drink_list = favorite_drink_list.filter(drink__drink_property__startswith=checkbox)
+    else:
+        filter_favorite_drink_list = user.favoritedrink_set.order_by("-id").filter(
+            drink__name__icontains=search
+        )
     return render(
-        request, "favorites.html", {"favorite_drink_list": favorite_drink_list}
+        request, "favorites.html", {"filter_favorite_drink_list": filter_favorite_drink_list}
     )
 
 
@@ -47,12 +54,14 @@ def add_favorite_drink(request):
     instruction = random_drink["instruction"]
     ingredients = random_drink["ingredients"]
     measures = random_drink["measures"]
+    drink_property = random_drink["drink_property"]
     drink = Drink(
         name=name,
         drink_url=drink_url,
         instruction=instruction,
         ingredients=ingredients,
         measures=measures,
+        drink_property=drink_property,
     )
     drink.save()
 

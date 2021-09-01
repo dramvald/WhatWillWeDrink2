@@ -13,10 +13,6 @@ class CocktailDBApiClient:
         data = requests.get(self.RANDOM_DRINK_API_URL).json()
         drink = data["drinks"][0]
 
-        # Рекурсивно запрашиваем напиток, пока не получим алкогольный
-        if drink["strAlcoholic"] != "Alcoholic":
-            return self.get_random_drink()
-
         name = drink["strDrink"]
         instruction = drink["strInstructions"]
         img_url = drink["strDrinkThumb"]
@@ -24,12 +20,14 @@ class CocktailDBApiClient:
         ingredients = self._get_values_of_keys_sorted_by_index(drink, "strIngredient")
         measures = self._get_values_of_keys_sorted_by_index(drink, "strMeasure")
 
+        drink_property = drink["strAlcoholic"]
         return {
             "name": name,
             "img_url": img_url,
             "instruction": instruction,
             "ingredients": list(filter(None, ingredients)),
             "measures": list(filter(None, measures)),
+            "drink_property": drink_property,
         }
 
     def _get_values_of_keys_sorted_by_index(self, drink, name):
