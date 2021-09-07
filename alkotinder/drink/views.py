@@ -29,18 +29,15 @@ def list_favorite_drinks(request):
     search = request.GET.get("search", "")  # Получаю значение GET параметра search.
     user = request.user  # request.user.id атрибут представляет id текущего пользователя
 
-    checkbox = request.GET.get("checkbox", "")
+    is_alcoholic = request.GET.get("is_alcoholic", "")
     favorite_drink_list = user.favoritedrink_set.order_by("-id").filter(
         drink__name__icontains=search
     )  # фильтр по названию напитка
-    if checkbox:
-        filter_favorite_drink_list = favorite_drink_list.filter(drink__drink_property__startswith=checkbox)
-    else:
-        filter_favorite_drink_list = user.favoritedrink_set.order_by("-id").filter(
-            drink__name__icontains=search
-        )
+    if is_alcoholic:
+        favorite_drink_list = favorite_drink_list.filter(drink__drink_property__startswith=is_alcoholic)
+
     return render(
-        request, "favorites.html", {"filter_favorite_drink_list": filter_favorite_drink_list}
+        request, "favorites.html", {"favorite_drink_list": favorite_drink_list, "is_alcoholic": is_alcoholic}
     )
 
 
