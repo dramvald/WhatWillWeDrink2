@@ -12,7 +12,7 @@ class Drink(models.Model):
         models.CharField("Ingredients", max_length=300), blank=True
     )
     measures = ArrayField(models.CharField("Measures", max_length=300), blank=True)
-    drink_property = models.CharField("Drink property", max_length=50, null=True)
+    is_alcoholic = models.BooleanField()
 
     def __str__(self):
         return self.name

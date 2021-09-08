@@ -34,7 +34,7 @@ def list_favorite_drinks(request):
         drink__name__icontains=search
     )  # фильтр по названию напитка
     if is_alcoholic:
-        favorite_drink_list = favorite_drink_list.filter(drink__drink_property__startswith=is_alcoholic)
+        favorite_drink_list = favorite_drink_list.filter(drink__is_alcoholic=is_alcoholic)
 
     return render(
         request, "favorites.html", {"favorite_drink_list": favorite_drink_list, "is_alcoholic": is_alcoholic}
@@ -51,14 +51,14 @@ def add_favorite_drink(request):
     instruction = random_drink["instruction"]
     ingredients = random_drink["ingredients"]
     measures = random_drink["measures"]
-    drink_property = random_drink["drink_property"]
+    is_alcoholic = random_drink["is_alcoholic"]
     drink = Drink(
         name=name,
         drink_url=drink_url,
         instruction=instruction,
         ingredients=ingredients,
         measures=measures,
-        drink_property=drink_property,
+        is_alcoholic=is_alcoholic,
     )
     drink.save()
 

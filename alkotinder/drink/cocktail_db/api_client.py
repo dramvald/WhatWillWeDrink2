@@ -4,6 +4,7 @@ from queue import PriorityQueue
 
 class CocktailDBApiClient:
     RANDOM_DRINK_API_URL = "https://www.thecocktaildb.com/api/json/v1/1/random.php"
+    ALCOHOL = 'Alcoholic'
 
     def get_random_drink(self):
         """
@@ -20,14 +21,18 @@ class CocktailDBApiClient:
         ingredients = self._get_values_of_keys_sorted_by_index(drink, "strIngredient")
         measures = self._get_values_of_keys_sorted_by_index(drink, "strMeasure")
 
-        drink_property = drink["strAlcoholic"]
+        if self.ALCOHOL == drink['strAlcoholic']:
+            is_alcoholic = True
+        else:
+            is_alcoholic = False
+
         return {
             "name": name,
             "img_url": img_url,
             "instruction": instruction,
             "ingredients": list(filter(None, ingredients)),
             "measures": list(filter(None, measures)),
-            "drink_property": drink_property,
+            "is_alcoholic": is_alcoholic,
         }
 
     def _get_values_of_keys_sorted_by_index(self, drink, name):
