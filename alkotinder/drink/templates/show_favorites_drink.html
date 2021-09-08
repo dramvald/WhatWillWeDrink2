@@ -32,7 +32,7 @@
                           <a href="{% url 'list_favorite_drinks' %}" class="nav-link active" aria-current="page">Favorites</a>
                       </li>
                       <li class="navbar-link">
-                          <a href="#" class="nav-link active" aria-current="page">Blacklist</a>
+                          <a href="#" class="nav-link active" aria-current="page"></a>
                       </li>
                   </ul>
                   <ul class="navbar-nav me-aut">
@@ -67,6 +67,13 @@
                 <div class="col-12 "><h1 align="center">{{ drink.name }}</h1></div>
                 <div class="col-12 align-self-center" align="center">
                     <img src= {{drink.drink_url}} class="img-thumbnail" width="400px" height="444px" alt="Drink">
+                </div>
+                <div class="col-12" align="center">
+                        {% if drink.is_alcoholic %}
+                            <h2>"Alcoholic"</h2>
+                            {% else %}
+                            <h2>"No alcoholic"</h2>
+                            {% endif %}
                 </div>
                 <div class="col-12" align="center">
                     <h2 align="center">Instructions</h2>
