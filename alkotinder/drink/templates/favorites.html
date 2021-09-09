@@ -67,8 +67,11 @@
                     <form action="{% url 'list_favorite_drinks' %}">
                          {% csrf_token %}
                         <label class="form-label" style="font-size: 18pt;">Drinks search </label>
+                        {% if search %}
+                        <input class="form-control" type="search" placeholder="Type to search..." value={{ search }} name="search">
+                        {% else %}
                         <input class="form-control" type="search" placeholder="Type to search..." name="search">
-
+                        {% endif %}
                         {% if is_alcoholic %}
                             <input class="form-check-input" type="checkbox" name="is_alcoholic" value="True" id="Check1" checked>
                         {% else %}

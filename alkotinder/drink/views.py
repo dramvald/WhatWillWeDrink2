@@ -37,7 +37,7 @@ def list_favorite_drinks(request):
         favorite_drink_list = favorite_drink_list.filter(drink__is_alcoholic=is_alcoholic)
 
     return render(
-        request, "favorites.html", {"favorite_drink_list": favorite_drink_list, "is_alcoholic": is_alcoholic}
+        request, "favorites.html", {"favorite_drink_list": favorite_drink_list, "is_alcoholic": is_alcoholic, "search": search}
     )
 
 
